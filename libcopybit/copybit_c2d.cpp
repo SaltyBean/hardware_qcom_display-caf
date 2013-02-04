@@ -910,8 +910,8 @@ static void populate_buffer_info(struct copybit_image_t const *img, bufferInfo& 
 static size_t get_size(const bufferInfo& info)
 {
     size_t size = 0;
-    int w = info.width;
-    int h = info.height;
+    uint32_t w = info.width;
+    uint32_t h = info.height;
     int aligned_w = ALIGN(w, 32);
     switch(info.format) {
         case HAL_PIXEL_FORMAT_NV12_ENCODEABLE:

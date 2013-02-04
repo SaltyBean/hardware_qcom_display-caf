@@ -372,7 +372,7 @@ bool MDPCompLowRes::isDoable(hwc_context_t *ctx,
         hwc_display_contents_1_t* list) {
     //Number of layers
     const int dpy = HWC_DISPLAY_PRIMARY;
-    int numAppLayers = ctx->listStats[dpy].numAppLayers;
+    uint32_t numAppLayers = ctx->listStats[dpy].numAppLayers;
 
     overlay::Overlay& ov = *ctx->mOverlay;
     int availablePipes = ov.availablePipes(dpy);
@@ -415,7 +415,7 @@ bool MDPCompLowRes::isDoable(hwc_context_t *ctx,
     }
 
     //MDP composition is not efficient if layer needs rotator.
-    for(int i = 0; i < numAppLayers; ++i) {
+    for(unsigned int i = 0; i < numAppLayers; ++i) {
         // As MDP h/w supports flip operation, use MDP comp only for
         // 180 transforms. Fail for any transform involving 90 (90, 270).
         hwc_layer_1_t* layer = &list->hwLayers[i];
